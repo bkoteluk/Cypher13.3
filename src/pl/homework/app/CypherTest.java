@@ -11,15 +11,23 @@ public class CypherTest {
         try {
             Scanner sc = new Scanner(System.in);
             System.out.println("Podaj tekst jawny (do zaszyfrowania): ");
-            String lineIn = sc.nextLine();
+            String evidentText = sc.nextLine();
             System.out.println("Podaj przesunięcie: ");
-            try {
-               int shift = sc.nextInt();
-               shiftLetters(shift);
-               cesarCypher(lineIn.toUpperCase().split(""));
-            } catch (InputMismatchException ex) {
-                System.out.println("Podano błędny typ parametru przesunięcia - powinna to być liczba całkowita");
-            }
+
+            int shift = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Zaszystowany tekst : ");
+            System.out.println(cesarCypher(evidentText, shift));
+
+            System.out.println("Podaj tekst zaszyfrowaniy (do odszyfrowania): ");
+            String cypherText = sc.nextLine();
+            System.out.println("Podaj przesunięcie: ");
+
+            shift = sc.nextInt();
+            System.out.println("Tekst po deszyfracji : ");
+            System.out.println(cesarDeCypher(cypherText, shift));
+        } catch (InputMismatchException ex) {
+            System.out.println("Podano błędny typ parametru przesunięcia - powinna to być liczba całkowita");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
