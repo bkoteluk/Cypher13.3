@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class CypherTools {
 
@@ -21,7 +19,7 @@ public class CypherTools {
         bufferedReader.close();
     }
 
-    public static void shiftLetters(int shift) throws IOException {
+    private static void shiftLetters(int shift) throws IOException {
         readDBLetters();
         cypherLetters = new String[letters.length];
         for (int i = 0; i< letters.length; i++) {
