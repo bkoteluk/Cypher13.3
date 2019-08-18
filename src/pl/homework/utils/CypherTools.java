@@ -4,13 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
-
 
 public class CypherTools {
 
     public static final String LETTER_DB_FILE = "cypher.db";
-    public static final int SHIFT_LETTER = 3;
     public static String[] letters;
     public static String[] cypherLetters;
 
@@ -22,11 +19,11 @@ public class CypherTools {
         bufferedReader.close();
     }
 
-    public static void shiftLetters() throws IOException {
+    public static void shiftLetters(int shift) throws IOException {
         readDBLetters();
         cypherLetters = new String[letters.length];
         for (int i = 0; i< letters.length; i++) {
-            cypherLetters[i] = letters[(i + SHIFT_LETTER-1)%letters.length];
+            cypherLetters[i] = letters[(i + shift-1)%letters.length];
         }
     }
 
@@ -45,10 +42,4 @@ public class CypherTools {
         }
     }
 
-    public static String[] readText() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Podaj tekst jawny (do zaszyfrowania): ");
-        String lineIn = sc.nextLine();
-        return lineIn.toUpperCase().split("");
-    }
 }
